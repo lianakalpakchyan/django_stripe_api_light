@@ -5,6 +5,12 @@ It lets you browse items, create orders, add items, apply discounts/taxes, and p
 
 ---
 
+
+## Find demo version here
+
+**https://star-shop-en1c.onrender.com**
+
+
 ## How to Run
 
 1. Make your own `.env` file based on `.env.example`.
