@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-k5svt^pxjemq4c7z17ub=xfs)(5&utg51#r5m8&x^0g__sat4x
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'https://localhost', 'https://django-stripe-api-light.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'https://localhost', 'https://star_shop.onrender.com']
 
 # Application definition
 
