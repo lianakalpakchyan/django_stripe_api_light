@@ -1,0 +1,16 @@
+<div class="card m-3">
+    <div class="card-header d-flex">
+        <i class="fa-solid fa-coins fa-bounce" style="color: #212529; margin: 5px 5px 0 0;"></i>
+        Items are in a chosen currency
+        <select class="form-select form-select-sm mx-3" aria-label=".form-select-sm" id="currency" style="width: 100px">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const params = new URLSearchParams(window.location.search);
+    const currency = params.get("currency");
+    $('#currency').val(currency == null ? "USD" : currency);
+</script>

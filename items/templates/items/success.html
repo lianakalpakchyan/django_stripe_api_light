@@ -1,0 +1,13 @@
+{% extends "items/base.html" %}
+
+{% block title %}Thanks for your order!{% endblock title %}
+
+{% block content %}
+<div class="mt-5 text-center">
+    <h1>Thanks for your order!</h1>
+    <hr>
+    <button type="button" class="btn btn-dark">
+        <a href="{% url 'item_list' %}" class="back">Get back!</a>
+    </button>
+</div>
+{% endblock content %}

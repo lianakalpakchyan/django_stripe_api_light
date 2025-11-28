@@ -1,0 +1,54 @@
+<div class="order-summary">
+    <ul class="list-unstyled">
+        <li class="d-flex justify-content-between">
+            <span>Subtotal:</span>
+            <span>
+                <span id="subtotal-cur"></span>
+                <span id="subtotal"></span>
+            </span>
+        </li>
+        <li class="d-flex justify-content-between">
+            <span>Discount:</span>
+            <select class="form-select form-select-sm w-50" aria-label=".form-select-sm w-50" id="discount"></select>
+        </li>
+        <li class="d-flex justify-content-between">
+            <span>Tax:</span>
+            <select class="form-select form-select-sm w-50" aria-label=".form-select-sm w-50" id="tax"></select>
+        </li>
+        <li class="d-flex justify-content-between">
+            <span class="total-price">Total:</span>
+            <span>
+                <span class="total-price" id="total-price-cur"></span>
+                <span class="total-price" id="total-price"></span>
+            </span>
+        </li>
+    </ul>
+    <button class="btn btn-checkout-green buy-button w-100">Buy!</button>
+</div>
+
+<script type="text/javascript">
+    const stripe = Stripe('{{ stripe_public_key }}');
+
+    $('body').on('change', '#discount', function() {
+        updateOrder({discount_id: $(this).val()});
+    })
+
+    $('body').on('change', '#tax', function() {
+        updateOrder({tax_id: $(this).val()});
+    })
+
+     $('.buy-button').click(function() {
+        localStorage.removeItem("order_code");
+
+        fetch('/buy', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+                'X-Order-Code': orderCode
+            },
+        })
+        .then(response => response.json())
+        .then(session => stripe.redirectToCheckout({ sessionId: session.id }));
+    });
+</script>
